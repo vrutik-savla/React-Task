@@ -95,7 +95,8 @@ function EmployeeData() {
         <Button
           onClick={() => navigate("employee-form")}
           variant="contained"
-          sx={{}}
+          size="large"
+          sx={{ fontSize: "1.2rem" }}
         >
           Create New EMployee
         </Button>
@@ -113,6 +114,8 @@ function EmployeeData() {
           pageSizeOptions={[10]}
           sx={{
             m: 2,
+            fontSize: "1.2rem",
+            fontFamily: "inherit",
           }}
           loading={!employees.length}
         />

@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import styled from "@emotion/styled";
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,6 +11,11 @@ import {
   fetchEmployee,
   updateEmployee,
 } from "../services/apiEmployee";
+
+const Form = styled.form`
+  width: 50rem;
+  margin: 2.4rem auto;
+`;
 
 // generateId: Function to generate random unique IDs
 function generateId() {
@@ -84,16 +90,10 @@ function EmployeeForm() {
 
   return (
     <Box component="div">
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{
-          width: "50rem",
-          margin: "2.4rem auto",
-        }}
-      >
+      <Form onSubmit={handleSubmit}>
         <TextField
           fullWidth
+          margin="normal"
           id="fullName"
           label="FullName"
           variant="outlined"
@@ -102,6 +102,7 @@ function EmployeeForm() {
         />
         <TextField
           fullWidth
+          margin="normal"
           id="email"
           label="Email"
           variant="outlined"
@@ -110,6 +111,7 @@ function EmployeeForm() {
         />
         <TextField
           fullWidth
+          margin="normal"
           id="contactNumber"
           label="Contact Number"
           variant="outlined"
@@ -118,6 +120,7 @@ function EmployeeForm() {
         />
         <TextField
           fullWidth
+          margin="normal"
           id="dateOfBirth"
           label="Date of birth"
           variant="outlined"
@@ -126,6 +129,7 @@ function EmployeeForm() {
         />
         <TextField
           fullWidth
+          margin="normal"
           id="residentialAddress"
           label="Residential address"
           variant="outlined"
@@ -135,7 +139,7 @@ function EmployeeForm() {
         <Button type="submit" variant="contained">
           Submit
         </Button>
-      </Box>
+      </Form>
     </Box>
   );
 }
