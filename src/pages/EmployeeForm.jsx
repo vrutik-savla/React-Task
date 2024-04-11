@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
 
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import {
   createEmployee,
@@ -15,6 +15,11 @@ import {
 const Form = styled.form`
   width: 50rem;
   margin: 2.4rem auto;
+`;
+const H1 = styled.h1`
+  text-align: center;
+  font-size: 2.4rem;
+  margin-top: 3.2rem;
 `;
 
 // generateId: Function to generate random unique IDs
@@ -85,12 +90,27 @@ function EmployeeForm() {
     if (updateUserId) updateEmployee(newEmployee);
     else createEmployee(newEmployee);
 
-    navigate("/");
+    navigate("/employee-data");
   }
 
   return (
     <Box component="div">
+      <nav>
+        <Button variant="contained" size="large" sx={{ margin: "2.4rem" }}>
+          <Link
+            to="/employee-data"
+            style={{
+              color: "#eee",
+              textDecoration: "none",
+              fontSize: "1.2rem",
+            }}
+          >
+            Employee data
+          </Link>
+        </Button>
+      </nav>
       <Form onSubmit={handleSubmit}>
+        <H1>{updateUserId ? "Update Employee" : "Create Employee"}</H1>
         <TextField
           fullWidth
           margin="normal"

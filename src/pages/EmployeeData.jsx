@@ -4,11 +4,18 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
+import styled from "@emotion/styled";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { deleteEmployee, fetchEmployees } from "../services/apiEmployee";
+
+const H1 = styled.h1`
+  text-align: center;
+  font-size: 2.4rem;
+  margin-top: 3.2rem;
+`;
 
 function EmployeeData() {
   const navigate = useNavigate();
@@ -93,13 +100,14 @@ function EmployeeData() {
     <Box component="div">
       <Box sx={{ height: 400, width: "50%", margin: "0 auto" }}>
         <Button
-          onClick={() => navigate("employee-form")}
+          onClick={() => navigate("/employee-form")}
           variant="contained"
           size="large"
-          sx={{ fontSize: "1.2rem" }}
+          sx={{ fontSize: "1.2rem", margin: "1.2rem" }}
         >
           Create New EMployee
         </Button>
+        <H1>Employee Data</H1>
         <DataGrid
           autoHeight
           rows={employees}
