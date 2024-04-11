@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+
 import styled from "@emotion/styled";
 
 import { useEffect, useState } from "react";
@@ -19,7 +21,7 @@ const Form = styled.form`
 const H1 = styled.h1`
   text-align: center;
   font-size: 2.4rem;
-  margin-top: 3.2rem;
+  margin: 2.4rem 0;
 `;
 
 // generateId: Function to generate random unique IDs
@@ -67,6 +69,7 @@ function EmployeeForm() {
   // Form submit function to create or to update an employee
   async function handleSubmit(e) {
     e.preventDefault();
+
     if (
       !fullName ||
       !email ||
@@ -93,72 +96,120 @@ function EmployeeForm() {
     navigate("/employee-data");
   }
 
+  function handleReset() {
+    setFullName("");
+    setEmail("");
+    setContactNumber("");
+    setDateOfBirth("");
+    setResidentialAddress("");
+  }
+
   return (
     <Box component="div">
-      <nav>
-        <Button variant="contained" size="large" sx={{ margin: "2.4rem" }}>
-          <Link
-            to="/employee-data"
-            style={{
-              color: "#eee",
-              textDecoration: "none",
-              fontSize: "1.2rem",
-            }}
-          >
-            Employee data
-          </Link>
-        </Button>
-      </nav>
+      <Button variant="contained" size="large" sx={{ margin: "2.4rem" }}>
+        <Link
+          to="/employee-data"
+          style={{
+            color: "#eee",
+            textDecoration: "none",
+            fontSize: "1.2rem",
+          }}
+        >
+          Employee data
+        </Link>
+      </Button>
+
       <Form onSubmit={handleSubmit}>
         <H1>{updateUserId ? "Update Employee" : "Create Employee"}</H1>
-        <TextField
-          fullWidth
-          margin="normal"
-          id="fullName"
-          label="FullName"
-          variant="outlined"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
-        <TextField
-          fullWidth
-          margin="normal"
-          id="email"
-          label="Email"
-          variant="outlined"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          fullWidth
-          margin="normal"
-          id="contactNumber"
-          label="Contact Number"
-          variant="outlined"
-          value={contactNumber}
-          onChange={(e) => setContactNumber(e.target.value)}
-        />
-        <TextField
-          fullWidth
-          margin="normal"
-          id="dateOfBirth"
-          label="Date of birth"
-          variant="outlined"
-          value={dateOfBirth}
-          onChange={(e) => setDateOfBirth(e.target.value)}
-        />
-        <TextField
-          fullWidth
-          margin="normal"
-          id="residentialAddress"
-          label="Residential address"
-          variant="outlined"
-          value={residentialAddress}
-          onChange={(e) => setResidentialAddress(e.target.value)}
-        />
-        <Button type="submit" variant="contained">
-          Submit
-        </Button>
+
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <TextField
+              id="fullName"
+              label="Full Name"
+              variant="outlined"
+              fullWidth
+              required
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              id="email"
+              label="Email"
+              variant="outlined"
+              fullWidth
+              required
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              id="contactNumber"
+              label="Contact Number"
+              variant="outlined"
+              type="number"
+              fullWidth
+              required
+              value={contactNumber}
+              onChange={(e) => setContactNumber(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              id="dateOfBirth"
+              label="Date of Birth"
+              type="date"
+              variant="outlined"
+              fullWidth
+              required
+              InputLabelProps={{ shrink: true }}
+              value={dateOfBirth}
+              onChange={(e) => setDateOfBirth(e.target.value)}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              id="residentialAddress"
+              label="Address"
+              variant="outlined"
+              fullWidth
+              required
+              multiline
+              rows={4}
+              value={residentialAddress}
+              onChange={(e) => setResidentialAddress(e.target.value)}
+            />
+          </Grid>
+
+          <Grid item xs={6}>
+            <Button
+              variant="outlined"
+              color="primary"
+              fullWidth
+              type="reset"
+              size="large"
+              onClick={handleReset}
+            >
+              Reset
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              type="submit"
+              size="large"
+            >
+              Submit
+            </Button>
+          </Grid>
+        </Grid>
       </Form>
     </Box>
   );

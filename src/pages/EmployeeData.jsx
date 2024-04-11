@@ -97,37 +97,37 @@ function EmployeeData() {
   ];
 
   return (
-    <Box component="div">
-      <Box sx={{ height: 400, width: "50%", margin: "0 auto" }}>
-        <Button
-          onClick={() => navigate("/employee-form")}
-          variant="contained"
-          size="large"
-          sx={{ fontSize: "1.2rem", margin: "1.2rem" }}
-        >
-          Create New EMployee
-        </Button>
-        <H1>Employee Data</H1>
-        <DataGrid
-          autoHeight
-          rows={employees}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 10,
-              },
+    <Box component="div" sx={{ height: 400, width: "50%", margin: "0 auto" }}>
+      <Button
+        onClick={() => navigate("/employee-form")}
+        variant="contained"
+        size="large"
+        sx={{ fontSize: "1.2rem", margin: "1.2rem" }}
+      >
+        Create New EMployee
+      </Button>
+
+      <H1>Employee Data</H1>
+
+      <DataGrid
+        autoHeight
+        rows={employees}
+        columns={columns}
+        loading={!employees.length}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 10,
             },
-          }}
-          pageSizeOptions={[10]}
-          sx={{
-            m: 2,
-            fontSize: "1.2rem",
-            fontFamily: "inherit",
-          }}
-          loading={!employees.length}
-        />
-      </Box>
+          },
+        }}
+        pageSizeOptions={[10]}
+        sx={{
+          m: 2,
+          fontSize: "1.2rem",
+          fontFamily: "inherit",
+        }}
+      />
     </Box>
   );
 }
