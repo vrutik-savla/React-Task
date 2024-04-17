@@ -2,6 +2,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import SendIcon from "@mui/icons-material/Send";
 
 import styled from "@emotion/styled";
 
@@ -17,11 +19,6 @@ import {
 const Form = styled.form`
   width: 50rem;
   margin: 2.4rem auto;
-`;
-const H1 = styled.h1`
-  text-align: center;
-  font-size: 2.4rem;
-  margin: 2.4rem 0;
 `;
 
 // generateId: Function to generate random unique IDs
@@ -106,22 +103,7 @@ function EmployeeForm() {
 
   return (
     <Box component="div">
-      <Button variant="contained" size="large" sx={{ margin: "2.4rem" }}>
-        <Link
-          to="/employee-data"
-          style={{
-            color: "#eee",
-            textDecoration: "none",
-            fontSize: "1.2rem",
-          }}
-        >
-          Employee data
-        </Link>
-      </Button>
-
       <Form onSubmit={handleSubmit}>
-        <H1>{updateUserId ? "Update Employee" : "Create Employee"}</H1>
-
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
@@ -205,6 +187,7 @@ function EmployeeForm() {
               fullWidth
               type="submit"
               size="large"
+              endIcon={<SendIcon />}
             >
               Submit
             </Button>

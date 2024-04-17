@@ -4,6 +4,7 @@ import { BASE_URL } from "../constants/constants";
 export async function fetchEmployees() {
   try {
     const res = await fetch(`${BASE_URL}/employees`);
+    // const res = await fetch(`${BASE_URL}`);
     const data = await res.json();
     console.log(data);
     return data;
@@ -28,6 +29,7 @@ export async function fetchEmployee(id) {
 export async function createEmployee(employeeData) {
   try {
     const res = await fetch(`${BASE_URL}/employees`, {
+      // const res = await fetch(`${BASE_URL}&__method=POST`, {
       method: "POST",
       body: JSON.stringify(employeeData),
       headers: {
@@ -35,7 +37,7 @@ export async function createEmployee(employeeData) {
       },
     });
     const data = await res.json();
-    console.log(data);
+    console.log("Created", data);
   } catch (err) {
     console.error(err);
   }
